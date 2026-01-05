@@ -1,0 +1,36 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% block contents %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1000px; /* Ensure table has minimum width to enable scroll if too wide */
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+</style>
+<section id="introduction">
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h3 class="text-center text-primary mb-4">Digital Forensics Dataset</h3>
+        <div class="table-responsive">
+            {{ data|safe }}
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

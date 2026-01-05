@@ -1,0 +1,40 @@
+{% extends 'users/userbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section id="introduction">
+    <h2>Introduction</h2>
+    <p>
+    <h1>Simulation Results</h1>
+    <p><strong>Total Evidence:</strong> {{ total }}</p>
+    <p><strong>Completed:</strong> {{ completed }}</p>
+    <p><strong>Tampered:</strong> {{ tampered }}</p>
+    <p><strong>Failed:</strong> {{ failed }}</p>
+
+    <h2>Graphs</h2>
+    <img src="/media/{{ graphs.phase_counts }}" width="500">
+    <img src="/media/{{ graphs.process_flow }}" width="500">
+    <img src="/media/{{ graphs.evidence_types }}" width="500">
+
+    {% if tampered_list %}
+    <h3>Tampered Evidence</h3>
+    <ul>
+        {% for eid, phase in tampered_list %}
+        <li>{{ eid }} tampered at {{ phase }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if failed_list %}
+    <h3>Failed Evidence</h3>
+    <ul>
+        {% for eid, phase in failed_list %}
+        <li>{{ eid }} failed at {{ phase }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </p>
+</section>
+
+
+{%endblock%}

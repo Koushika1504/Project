@@ -1,0 +1,44 @@
+{% extends 'users/userbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section id="introduction">
+    <div class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold mb-4">Dynamic Evidence Results</h2>
+
+        <h3 class="text-lg font-semibold">Summary</h3>
+        <ul>
+            <li>Total Evidence: {{ evidence_list|length }}</li>
+            <li>Completed: {{ results.completed }}</li>
+            <li>Tampered: {{ results.tampered|length }}</li>
+            <li>Failed: {{ results.failed|length }}</li>
+        </ul>
+
+<!--        <h3 class="text-lg font-semibold mt-4">Graphs</h3>-->
+<!--        <img src="/media/{{ usrgraphs.phase_counts }}" width="400">-->
+<!--        <img src="/media/{{ usrgraphs.process_flow }}" width="400">-->
+<!--        <img src="/media/{{ usrgraphs.evidence_types }}" width="400">-->
+
+        {% if results.tampered %}
+        <h4 class="text-red-600 mt-4">Tampered Evidence</h4>
+        <ul>
+            {% for eid, phase in results.tampered %}
+            <li>{{ eid }} tampered at {{ phase }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if results.failed %}
+        <h4 class="text-yellow-600 mt-4">Failed Evidence</h4>
+        <ul>
+            {% for eid, phase in results.failed %}
+            <li>{{ eid }} failed at {{ phase }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+</section>
+
+
+{%endblock%}

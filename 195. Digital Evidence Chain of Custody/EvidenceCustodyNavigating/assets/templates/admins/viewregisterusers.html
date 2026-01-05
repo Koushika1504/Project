@@ -1,0 +1,60 @@
+{% extends 'admins/adminbase.html' %}
+{% load static %}
+
+{% block contents %}
+<section id="introduction">
+  <h2 class="text-3xl font-bold text-rose-600 mb-6 text-center">📋 Registered Users</h2>
+
+
+    <table class="min-w-full text-sm text-gray-800 border border-gray-300 border-collapse">
+
+      <thead class="bg-rose-500 text-white text-center">
+        <tr class="text-base">
+          <th class="border border-gray-300 px-4 py-3">S.No</th>
+          <th class="border border-gray-300 px-4 py-3">Name</th>
+          <th class="border border-gray-300 px-4 py-3">Login ID</th>
+          <th class="border border-gray-300 px-4 py-3">Mobile</th>
+          <th class="border border-gray-300 px-4 py-3">Email</th>
+          <th class="border border-gray-300 px-4 py-3">Locality</th>
+          <th class="border border-gray-300 px-4 py-3">Status</th>
+          <th class="border border-gray-300 px-4 py-3">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="bg-white text-center">
+        {% for i in data %}
+        <tr class="hover:bg-rose-50 transition duration-200">
+          <td class="border border-gray-300 py-3 px-2">{{ forloop.counter }}</td>
+          <td class="border border-gray-300 py-3 px-2">{{ i.name }}</td>
+          <td class="border border-gray-300 py-3 px-2">{{ i.loginid }}</td>
+          <td class="border border-gray-300 py-3 px-2">{{ i.mobile }}</td>
+          <td class="border border-gray-300 py-3 px-2">{{ i.email }}</td>
+          <td class="border border-gray-300 py-3 px-2">{{ i.locality }}</td>
+
+          <td class="border border-gray-300 py-3 px-2">
+            {% if i.status == 'waiting' %}
+            <span class="bg-yellow-200 text-yellow-800 font-semibold py-1 px-3 rounded-full text-xs">Waiting</span>
+            {% else %}
+            <span class="bg-green-200 text-green-800 font-semibold py-1 px-3 rounded-full text-xs">Active</span>
+            {% endif %}
+          </td>
+
+          <td class="border border-gray-300 py-3 px-2">
+            {% if i.status == 'waiting' %}
+            <a href="/ActivaUsers/?uid={{ i.id }}"
+               class="text-blue-600 border border-blue-600 px-3 py-1 rounded-lg hover:bg-blue-100 font-semibold text-sm transition">Activate</a>
+            {% else %}
+            <span class="text-green-600 font-medium text-sm">Activated</span>
+            /
+            <a href="/DeleteUsers/?uid={{ i.id }}"
+               class="text-red-600 border border-red-600 px-3 py-1 rounded-lg hover:bg-red-100 font-semibold text-sm transition">Delete</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'users/userbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section id="introduction">
+
+    <div class="container mx-auto p-6">
+        <h2 class="text-xl font-bold mb-4">Dynamic Digital Evidence Input</h2>
+        <form method="post" action="{% url 'dynamic_input_results' %}">
+            {% csrf_token %}
+            <input type="hidden" name="total" value="2">
+
+            <div class="mb-4">
+                <h3 class="font-semibold">Evidence 1</h3>
+                <input type="text" name="id_1" placeholder="Evidence ID" required><br>
+                <input type="text" name="type_1" placeholder="Type" required><br>
+                <input type="text" name="description_1" placeholder="Description" required><br>
+                <input type="text" name="source_1" placeholder="Source" required>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="font-semibold">Evidence 2</h3>
+                <input type="text" name="id_2" placeholder="Evidence ID" required><br>
+                <input type="text" name="type_2" placeholder="Type" required><br>
+                <input type="text" name="description_2" placeholder="Description" required><br>
+                <input type="text" name="source_2" placeholder="Source" required>
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+        </form>
+    </div>
+</section>
+
+
+{%endblock%}

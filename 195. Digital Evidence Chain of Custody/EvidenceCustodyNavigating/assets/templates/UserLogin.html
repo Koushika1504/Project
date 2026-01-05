@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<section class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+  <div class="bg-white shadow-lg rounded-xl w-full max-w-lg p-8">
+    <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">🔐 User Login</h2>
+
+    <form method="POST" action="{% url 'UserLoginCheck' %}">
+      {% csrf_token %}
+
+      <table class="w-full table-auto">
+        <tbody>
+          <tr class="mb-4">
+            <td class="py-3 pr-4 text-right align-middle text-gray-700 font-medium">Login ID:</td>
+            <td class="py-3">
+              <input type="text" name="loginid" id="loginid" required
+                     placeholder="Enter your login ID"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </td>
+          </tr>
+
+          <tr class="mb-4">
+            <td class="py-3 pr-4 text-right align-middle text-gray-700 font-medium">Password:</td>
+            <td class="py-3">
+              <input type="password" name="pswd" id="pswd" required
+                     placeholder="Enter your password"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td class="py-4 flex gap-4">
+              <button type="submit"
+                      class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                Login
+              </button>
+              <button type="reset"
+                      class="w-full bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg hover:bg-gray-400 transition duration-200">
+                Reset
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% if messages %}
+      <div class="mt-4 text-center text-green-600">
+        {% for message in messages %}
+          <p class="text-sm font-medium">{{ message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</section>
+{% endblock %}

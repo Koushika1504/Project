@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Digital Evidence Chain of Custody</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: 'Roboto', sans-serif;
+          background-color: #f9f9f9;
+          color: #333;
+          scroll-behavior: smooth;
+        }
+        header {
+          background: #0f172a;
+          color: white;
+          padding: 1rem 2rem;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
+        header h1 {
+          font-size: 1.5rem;
+        }
+        nav {
+          margin-top: 0.5rem;
+        }
+        nav a {
+          color: #ccc;
+          margin-right: 1rem;
+          text-decoration: none;
+          font-size: 0.9rem;
+        }
+        nav a:hover {
+          color: #fff;
+        }
+        section {
+          padding: 4rem 2rem;
+          max-width: 900px;
+          margin: auto;
+        }
+        section h2 {
+          margin-bottom: 1rem;
+          color: #0f172a;
+        }
+        section p {
+          line-height: 1.7;
+          margin-bottom: 1rem;
+        }
+        footer {
+          background: #0f172a;
+          color: white;
+          text-align: center;
+          padding: 1rem 0;
+          margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Digital Evidence Chain of Custody</h1>
+    <nav>
+        <a href="{% url 'AdminHome' %}">Home</a>
+        <a href="{% url 'RegisterUsersView' %}">User View</a>
+        <a href="{% url 'index' %}">Logout</a>
+
+    </nav>
+</header>
+
+{%block contents%}
+{%endblock%}
+<footer>
+    <p>&copy; 2025 Digital Forensics Research</p>
+</footer>
+
+</body>
+</html>
